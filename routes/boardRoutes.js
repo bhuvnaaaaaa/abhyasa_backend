@@ -1,0 +1,22 @@
+import express from "express";
+import {
+  createBoard,
+  getBoards,
+  getBoardById,
+  updateBoard,
+  deleteBoard,
+} from "../controllers/boardController.js";
+import { requireAuth } from "../middleware/authMiddleware.js";
+
+const router = express.Router();
+
+// Public
+router.get("/", getBoards);
+router.get("/:id", getBoardById);
+
+// Protected
+router.post("/", requireAuth, createBoard);
+router.put("/:id", requireAuth, updateBoard);
+router.delete("/:id", requireAuth, deleteBoard);
+
+export default router;
