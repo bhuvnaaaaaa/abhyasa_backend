@@ -2,7 +2,6 @@ import express from "express";
 import {
   createBoard,
   getBoards,
-  getBoardById,
   updateBoard,
   deleteBoard,
 } from "../controllers/boardController.js";
@@ -12,7 +11,6 @@ const router = express.Router();
 
 // Public
 router.get("/", getBoards);
-router.get("/:id", getBoardById);
 
 // Protected
 router.post("/", requireAuth, createBoard);

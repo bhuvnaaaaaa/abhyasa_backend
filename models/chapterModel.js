@@ -17,9 +17,16 @@ const chapterSchema = new mongoose.Schema(
     videoUrl: {
       type: String, // YouTube iframe link
     },
-    notes: {
-      type: String, // can store HTML or markdown text
-    },
+      notes: {
+        type: String, // can store HTML or markdown text
+      },
+      number: {
+        type: Number,
+      },
+      content: {
+        type: Array,
+        default: [],
+      },
   },
   { timestamps: true }
 );
