@@ -117,7 +117,7 @@ export const loginUser = async (req, res) => {
 
     const user = await User.findOne({ $or: [{ email }, { phone }] });
     if (!user) {
-      return res.status(401).json({ message: "Invalid email/phone or password" });
+      return res.status(404).json({ message: "User not found. Please sign up instead." });
     }
 
     if (!user.password) return res.status(401).json({ message: "Invalid credentials" });
