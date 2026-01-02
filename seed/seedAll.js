@@ -31,7 +31,8 @@ const boards = [
   subjects: [
     { name: "Biology", chapterCount: 12 },
     { name: "Chemistry", chapterCount: 12 },
-    { name: "Mathematics", chapterCount: 12 },
+    { name: "Geography", chapterCount: 10 },
+    { name: "History & Civics", chapterCount: 10 },
     { name: "Physics", chapterCount: 12 },
   ],
   },
@@ -41,17 +42,19 @@ const boards = [
     subjects: [
       { name: "Biology", chapterCount: 8 },
       { name: "Chemistry", chapterCount: 8 },
-      { name: "Mathematics", chapterCount: 12 },
+      { name: "Geography", chapterCount: 10 },
+      { name: "History & Civics", chapterCount: 10 },
       { name: "Physics", chapterCount: 8 },
     ],
   },
   {
-    name: "State Board",
+    name: "Karnataka State Board",
     grades: ["6", "7", "8", "9", "10"],
     subjects: [
       { name: "Biology", chapterCount: 8 },
       { name: "Chemistry", chapterCount: 8 },
-      { name: "Mathematics", chapterCount: 12 },
+      { name: "Geography", chapterCount: 10 },
+      { name: "History & Civics", chapterCount: 10 },
       { name: "Physics", chapterCount: 8 },
     ],
   },

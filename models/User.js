@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
   phone: { type: String, unique: true, sparse: true },
   password: String,
   role: { type: String, enum: ["user", "admin"], default: "user" },
-  refreshToken: { type: String }
+  refreshToken: { type: String },
+  payment: { type: Boolean, default: false }
 });
 
 const User = mongoose.model("User", userSchema);

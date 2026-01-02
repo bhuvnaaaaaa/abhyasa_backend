@@ -89,6 +89,7 @@ export const registerUser = async (req, res) => {
       message: "User registered successfully",
       token: accessToken,
       userId: newUser._id,
+      payment: newUser.payment,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -144,7 +145,7 @@ export const loginUser = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
-    res.json({ message: "Login successful", token: accessToken, userId: user._id });
+    res.json({ message: "Login successful", token: accessToken, userId: user._id, payment: user.payment });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -230,4 +231,27 @@ export const createTokensForOAuth = async (user, res) => {
   });
 
   return accessToken;
+};
+
+// UPDATE PAYMENT STATUS
+export const updatePaymentStatus = async (req, res) => {
+  try {
+    const { payment } = req.body;
+    if (typeof payment !== 'boolean') {
+      return res.status(400).json({ message: "Payment status must be a boolean" });
+    }
+
+    const userId = req.user.id; // from requireAuth middleware
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.payment = payment;
+    await user.save();
+
+    res.json({ message: "Payment status updated successfully", payment: user.payment });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
